@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Login = (props) => {
     const { goToSignup, handleLoginSubmit, errorMsg, successMsg } = props;
-    const [name, setName] = useState('');
+    const [userId, setUserId] = useState('');
     const [password, setPassword] = useState('');
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
-            name, password
+            userId, password
         }
         handleLoginSubmit(data);
 
@@ -23,9 +25,9 @@ const Login = (props) => {
                 <div className='input-group my-1'>
                     <input type='text'
                         className='form-control'
-                        value={name}
-                        placeholder='Enter User name'
-                        onChange={e => setName(e.target.value)} />
+                        value={userId}
+                        placeholder='Enter User Id'
+                        onChange={e => setUserId(e.target.value)} />
                 </div>
                 <div className='input-group my-1'>
                     <input type='password'

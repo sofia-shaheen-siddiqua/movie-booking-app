@@ -7,7 +7,8 @@ import { ROLES } from '../../constants/userRoles';
 const Signup = (props) => {
     const { goToLogin, handleSignupSubmit, errorMsg, successMsg } = props;
 
-    const [name, setName] = useState('');
+    const [userId, setUserId] = useState('');
+    const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [userType, setUserType] = useState(ROLES.CUSTOMER);
@@ -15,7 +16,7 @@ const Signup = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
-            name, password, email, userType
+            userId, name: userName, password, email, userType
         }
         handleSignupSubmit(data);
 
@@ -30,9 +31,16 @@ const Signup = (props) => {
                 <div className='input-group my-1'>
                     <input type='text'
                         className='form-control'
-                        value={name}
+                        value={userId}
+                        placeholder='Enter User Id'
+                        onChange={e => setUserId(e.target.value)} />
+                </div>
+                <div className='input-group my-1'>
+                    <input type='text'
+                        className='form-control'
+                        value={userName}
                         placeholder='Enter User name'
-                        onChange={e => setName(e.target.value)} />
+                        onChange={e => setUserName(e.target.value)} />
                 </div>
                 <div className='input-group my-1'>
                     <input type='password'
